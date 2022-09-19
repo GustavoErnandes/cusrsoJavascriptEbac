@@ -15,11 +15,22 @@
 
         <form id="formulario-02">
             <h2>Faça seu cadastro</h2>
+            <label class="title">Nome</label>
             <input type="text" placeholder="digite seu nome" class="obrigatorio" name="nome">
+
+            <label class="title">Email</label>
             <input type="text" placeholder="digite seu email" class="email" name="email">
-            <input type="text" placeholder="digite seu telefone" class="" name="telefone">
-            <input type="text" placeholder="digite seu cep" class="numerico" name="cep">
+
+            <label class="title">Telefone</label>
+            <input type="tel" placeholder="digite seu telefone" class="telefone" name="telefone" id="telefone" maxlength="15">
+
+            <label class="title">CEP</label>
+            <input type="text" placeholder="digite seu cep" class="cep" id="cep" name="cep" maxlength="8">
+
+            <label class="title">Cidade</label>
             <input type="text" placeholder="digite seu cidade" class="obrigario" name="cidade">
+
+            <label class="title">Nome</label>
             <input type="text" placeholder="digite seu uf" class="uf" name="uf"> 
             <button type="submit">Enviar</button>
         </form>

@@ -101,7 +101,6 @@ function validaCampo(elemento){
 function validaCampoNumerico(elemento){
 
     elemento.addEventListener('focusout', function(event) {
-
         event.preventDefault();
 
         let numero = this.value.match(/^[\d]5-[\d]3/) ? this.value.replace(/-/, "") : this.value; 
@@ -120,6 +119,30 @@ function validaCampoNumerico(elemento){
     });
 
 }
+
+function validaCEP(elemento){
+    var re = /^([\d]{2})\.*([\d]{3})-*([\d]{3})/;
+
+    elemento.addEventListener('focusout', function(event) {
+        event.preventDefault();
+
+        let numero = this.value.match(re) ? this.value.replace(re,"$1.$2-$3") : this.value; 
+        
+        if(numero){
+            console.log(numero)
+            document.querySelector('.mensagem').innerHTML = "";
+            this.classList.remove('erro');
+            this.parentNode.classList.remove('erro');
+        }else{
+            document.querySelector('.mensagem').innerHTML = "verifique o preenchimento dos campos em destaque";
+            this.classList.add('erro');
+            this.parentNode.classList.add('erro');
+            return false;
+        }
+
+    });
+}
+
 
 
 function validaEmail(elemento){
@@ -144,10 +167,50 @@ function validaEmail(elemento){
 
 }
 
+// Mascara para telefone
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function mtel(v){
+    v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+    return v;
+}
+function id( el ){
+	return document.getElementById( el );
+}
+window.onload = function(){
+	id('telefone').onkeyup = function(){
+		mascara( this, mtel );
+	}
+}
+
+
+//Mascara Cep
+const input = document.getElementById("cep");
+
+input.addEventListener("keyup", formatarCep);
+
+function formatarCep(e){
+
+var v= e.target.value.replace(/\D/g,"")                
+
+v=v.replace(/^(\d{5})(\d)/,"$1-$2") 
+
+e.target.value = v;
+
+}
 
 let camposObrigatorios = document.querySelectorAll('input.obrigatorio');
 let camposNumericos = document.querySelectorAll('input.numero');
 let camposEmail = document.querySelectorAll('input.email');
+let camposCEP = document.querySelectorAll('input.cep');
 
 for( let emFoco of camposObrigatorios) {
     validaCampo(emFoco);
@@ -161,3 +224,6 @@ for( let emFoco of camposEmail) {
     validaEmail(emFoco);
 }
 
+for( let emFoco of camposCEP) {
+    validaCEP(emFoco);
+}

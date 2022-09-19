@@ -24,6 +24,8 @@ form {
 h2 {
     margin-bottom: 2rem;
     margin-top: 0.5rem;
+    font-size: 24px;
+    text-align: center;
 }
 
 input, button {
@@ -35,6 +37,14 @@ input, button {
 input {
     width: 80%;
     padding: 1rem 2rem;
+    border-radius: 5px;
+}
+
+.title {
+    font-size: medium;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 button {
