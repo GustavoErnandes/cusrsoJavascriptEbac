@@ -10,15 +10,21 @@
 <body>
     <h1>Lista de Itens</h1>
     <form >
-        <input type="text" placeholder="adiciona item">
+        <input type="text" placeholder="digite o item">
         <button type="submit" class="addTodo">Adicionar</button>
     </form>
     <template>
-        <li>
-            <h2></h2>
-            <button class="del">Deletar</button>
-            <button class="edit">Editar</button>
-        </li>
+        <table style="padding: 5px;">
+            <tr style="width: 250px;">
+                <td style="width: 100px;">
+                    <h2></h2>
+                </td>
+                <td style="justify-content: right; width: 150px;">
+                    <button class="del">Deletar</button>
+                    <button class="edit">Editar</button>
+                </td>
+            </tr>
+        </table>
     </template>
     <ul></ul>
     <script src="./dist/app.js"></script>
