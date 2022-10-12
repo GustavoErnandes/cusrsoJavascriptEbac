@@ -1,0 +1,33 @@
+{
+  "name": "crm",
+  "version": "1.0.0",
+  "description": "projeto para gerenciamento de contatos",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon ./index.js localhost 3001",
+    "build": "webpack",
+    "watch": "webpack serve --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cavalcantemmarcelo/node.git"
+  },
+  "author": "Marcelo Cavalcante",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cavalcantemmarcelo/node/issues"
+  },
+  "homepage": "https://github.com/cavalcantemmarcelo/node#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.20"
+  }
+}

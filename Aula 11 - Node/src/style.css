@@ -1,0 +1,12 @@
+body{
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+}
+
+#title{
+    color: blue;
+}
+h1{
+    font-weight: 900;
+}
