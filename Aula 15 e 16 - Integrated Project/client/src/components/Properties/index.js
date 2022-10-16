@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,6 +11,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
+import { colors } from '@mui/material';
 
 const baseUrl = 'http://localhost:3333/properties'
 
@@ -54,13 +55,6 @@ export default class Properties extends Component {
 
     }
 
-    /* Atualiza lista de imóveis */
-    getUpdatedList(propertie){
-        const list = this.state.list?.filter(p => p._id !== propertie._id)
-        if(propertie) list.unshift(propertie)
-        return list
-    }
-
     /* Atualiza Imóvel */
     update(event) {
         const propertie = { ...this.state.propertie }
@@ -101,9 +95,11 @@ export default class Properties extends Component {
     getListItem(response){
 
         return (
-            <ListItem  
-                alignItems="flex-start"
-                key={response._id}>
+            <>
+            <ListItem 
+                key={response._id}
+                style={{alignItems:"end", justifyContent:"center", display:"flex"}}
+            >
                     <ListItemAvatar>
                         <Avatar alt="Foto" src="https://picsum.photos/200/300?random=1" />
                     </ListItemAvatar>
@@ -124,15 +120,21 @@ export default class Properties extends Component {
                     <div className='actions'>
                         <button
                             className='btn-edit'
+                            style={{marginRight:5, background: colors.green[700], color: 'white', borderWidth:0, borderRadius: 5, padding:5}}
                             onClick={ () => this.load(response)}>
-                            Alterar</button>
+                            Alterar
+                        </button>
             
                         <button
                             className='btn-delete'
+                            style={{marginRight:5, background: colors.red[700], color: 'white', borderWidth:0, borderRadius: 5, padding:5}}
                             onClick={ () => this.remove(response)}>
-                            Deletar</button>
+                            Deletar
+                        </button>
                     </div>
             </ListItem>
+            <Divider/>
+            </>
         )
 
     }
@@ -210,7 +212,6 @@ export default class Properties extends Component {
 
     /* Renderiza formulário e lista */
     render() {
-        console.log(this.state.list)
         return( 
             <div className='content'>
                 {this.renderForm()}

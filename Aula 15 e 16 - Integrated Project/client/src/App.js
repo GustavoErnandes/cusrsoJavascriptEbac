@@ -28,7 +28,7 @@ const AppBar = styled(MuiAppBar, {
 function App() {
   return (
     <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: 'flex', backgroundColor: colors.grey[200] }}>
+      <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute">
           <Toolbar
